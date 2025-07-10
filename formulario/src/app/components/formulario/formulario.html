@@ -1,0 +1,37 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form" novalidate>
+
+  <div>
+    <label>Email:</label><br />
+    <input formControlName="email" [disabled]="step1Done" />
+    <div *ngIf="getErrorMessage('email')" style="color: red;">
+      {{ getErrorMessage('email') }}
+    </div>
+  </div>
+
+  <div>
+    <label>Senha:</label><br />
+    <input type="password" formControlName="senha" [disabled]="step1Done" />
+    <div *ngIf="getErrorMessage('senha')" style="color: red;">
+      {{ getErrorMessage('senha') }}
+    </div>
+  </div>
+
+  <div *ngIf="step1Done">
+    <label>Nome:</label><br />
+    <input formControlName="nome" />
+    <div *ngIf="getErrorMessage('nome')" style="color: red;">
+      {{ getErrorMessage('nome') }}
+    </div>
+  </div>
+
+  <div *ngIf="step1Done">
+    <label>Idade:</label><br />
+    <input type="number" formControlName="idade" />
+    <div *ngIf="getErrorMessage('idade')" style="color: red;">
+      {{ getErrorMessage('idade') }}
+    </div>
+  </div>
+
+  <br />
+  <button type="submit">Avançar</button>
+</form>
